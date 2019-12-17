@@ -6,8 +6,7 @@
 (deftest index-test
   (testing "Index page"
     (let [response (home-meters-app (mock/request :get "/"))]
-      (is (= (:status response) 200))
-      (is (= (:body response) "Hello"))))
+      (is (= (:status response) 200))))
 
   (testing "Error page"
     (let [response (home-meters-app (mock/request :get "/abc"))]
