@@ -9,7 +9,8 @@
   (resp/content-type (resp/resource-response page-file {:root "public"}) "text/html"))
 
 (defroutes app-routes
-  (GET "/" [] (respond-with-page "index.html"))
+  (GET "/api/*" [] "api")
+  (GET "/*" [] (respond-with-page "index.html"))
   (route/not-found "Error"))
 
 ; declare app
