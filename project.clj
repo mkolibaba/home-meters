@@ -19,7 +19,8 @@
   :ring {:handler home-meters.core/home-meters-app}
 
   ; scripts and dependencies from svelte-template
-  :npm {:package {:scripts {:build "rollup -c"
+  :npm {:ephemeral? false
+        :package {:scripts {:build "rollup -c"
                             :dev "rollup -c -w"
                             :start "sirv public"}}
         :dependencies [["navaid" "^1.0.2"]
