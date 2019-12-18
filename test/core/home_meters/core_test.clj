@@ -9,5 +9,5 @@
       (is (= (:status response) 200))))
 
   (testing "Error page"
-    (let [response (home-meters-app (mock/request :get "/abc"))]
-      (is (= (:status response) 404)))))
+    (let [response (home-meters-app (mock/request :post "/abc"))]
+      (is (= (:status response) 403)))))

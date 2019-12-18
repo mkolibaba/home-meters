@@ -34,6 +34,7 @@
 
   :main ^:skip-aot home-meters.core
   :source-paths ["src/core"]
+  :test-paths ["test/core"]
   :target-path "target/%s"
 
   ; TODO remove uberjar creation if exists 
