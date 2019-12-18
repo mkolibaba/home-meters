@@ -37,7 +37,7 @@
   :test-paths ["test/core"]
   :target-path "target/%s"
 
-  ; TODO remove uberjar creation if exists 
+  ; TODO remove uberjar creation if exists
   :profiles {:uberjar {:aot :all}
              ; ring-mock is using for testing web applications
              :dev {:dependencies [[ring/ring-mock "0.4.0"]]}})
