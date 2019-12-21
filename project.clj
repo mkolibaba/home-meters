@@ -8,7 +8,9 @@
                  ; compojure is a simple routing lib
                  [compojure "1.6.1"]
                  ; ring-defaults provides default settings for web application
-                 [ring/ring-defaults "0.3.2"]]
+                 [ring/ring-defaults "0.3.2"]
+                 ; json library
+                 [cheshire "5.9.0"]]
 
   ; plugin for running 'ring' task
   ; https://github.com/weavejester/lein-ring

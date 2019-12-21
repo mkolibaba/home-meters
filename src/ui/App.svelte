@@ -1,5 +1,8 @@
 <script>
-  import LoginForm from "./LoginForm.svelte";
+  import { Router, Link, Route } from "svelte-routing";
+  import LoginForm from "./forms/LoginForm.svelte";
+  import RegisterForm from "./forms/RegisterForm.svelte";
+  import NotFound from "./NotFound.svelte";
   import { onMount, setContext } from "svelte";
   import {
     key as userContextKey,
@@ -11,16 +14,15 @@
   });
 
   const submit = ({ email, password }) =>
-    new Promise((resolve, reject) =>
-      setTimeout(() => {
+    fetch("/api/user")
+      .then(response => response.json())
+      .then(user => {
         setContext(userContextKey, {
-          name: "Foo",
-          lastName: "Bar",
-          email: "foo@bar.com"
+          name: user.firstName,
+          lastName: user.lastName,
+          email: user.email
         });
-        resolve();
-      }, 1000)
-    );
+      });
 </script>
 
 <style>
@@ -30,10 +32,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to right, #cd76e2, #e358ab);
+    background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
   }
 </style>
 
-<section>
-  <LoginForm {submit} />
-</section>
+<Router>
+  <section class="text-center">
+    <Route path="/">
+      <LoginForm {submit} />
+    </Route>
+    <Route path="/register" component={RegisterForm} />
+    <Route component={NotFound} />
+  </section>
+</Router>
