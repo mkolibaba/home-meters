@@ -43,8 +43,7 @@
     <div class="success">
       🔓
       <br />
-      You've been successfully logged in as {credentials.name} {credentials.lastName}
-      ({credentials.email}).
+      You've been successfully logged in as {credentials.email}.
     </div>
   {:else}
     <h1>Log In</h1>

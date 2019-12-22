@@ -1,30 +1,38 @@
 (ns home-meters.core
-  (:require [compojure.core :refer [defroutes routes GET]]
+  (:require [compojure.core :refer [defroutes context routes GET POST]]
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.util.response :as resp]
             [cheshire.core :as chesire]))
 
-(defn to-json
-  [form]
+(defn json-response
+  [form & opts]
   (-> form
-      chesire/encode
+      chesire/generate-string
       resp/response
+      (into opts)
       (resp/content-type "application/json; charset=utf-8")))
 
-(defn respond-with-page
+(defn page-response
   [page-file]
-  (resp/content-type (resp/resource-response page-file {:root "public"}) "text/html"))
+  (-> page-file
+      (resp/resource-response {:root "public"})
+      (resp/content-type "text/html")))
 
+; api routes
 (defroutes api-routes
-  (GET "/api/user" [] (to-json {:firstName "Foo"
-                                :lastName "Bar"
-                                :email "foo@bar.baz"}))
-  (GET "/api/*" [] (to-json {:error "Incorrect API mapping"})))
+  (context "/api" []
+    (POST "/login" [])
+    (GET "/user" [] (json-response {:firstName "Foo"
+                                    :lastName "Bar"
+                                    :email "foo@bar.baz"}))
+    (GET "/*" [] (json-response {:error "Incorrect API mapping"} {:status 400}))))
 
+; spa serving route
 (defroutes spa-route
-  (GET "/*" [] (respond-with-page "index.html")))
+  (GET "/*" [] (page-response "index.html")))
 
+; not found route
 (defroutes not-found-route
   (route/not-found "Error"))
 
