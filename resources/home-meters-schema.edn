@@ -1,0 +1,14 @@
+{; define objects
+ :objects
+ {:User
+  {:fields
+   {:email {:type String}
+    :firstName {:type String}
+    :lastName {:type String}}}}
+
+ ; define queries
+ :queries
+ {:UserByEmail
+  {:type :User
+   :args {:email {:type String}}
+   :resolve :query/user-by-email}}}

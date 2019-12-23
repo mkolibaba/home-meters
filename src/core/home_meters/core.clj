@@ -1,9 +1,17 @@
 (ns home-meters.core
-  (:require [compojure.core :refer [defroutes context routes GET POST]]
+  (:require [home-meters.schema :as schema]
+            [com.walmartlabs.lacinia :as lacinia]
+            [compojure.core :refer [defroutes context routes GET POST]]
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.util.response :as resp]
             [cheshire.core :as chesire]))
+
+(def gql-schema (schema/load-schema))
+
+(defn q
+  [querystring]
+  (lacinia/execute gql-schema querystring nil nil))
 
 (defn json-response
   [form & opts]

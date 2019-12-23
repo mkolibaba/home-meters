@@ -10,7 +10,9 @@
                  ; ring-defaults provides default settings for web application
                  [ring/ring-defaults "0.3.2"]
                  ; json library
-                 [cheshire "5.9.0"]]
+                 [cheshire "5.9.0"]
+                 ; graphql library
+                 [com.walmartlabs/lacinia "0.36.0-alpha-2"]]
 
   ; plugin for running 'ring' task
   ; https://github.com/weavejester/lein-ring
