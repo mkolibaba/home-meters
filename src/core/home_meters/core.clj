@@ -40,6 +40,10 @@
 (defroutes spa-route
   (GET "/*" [] (page-response "index.html")))
 
+; graphql route
+(defroutes graphql-route
+  (POST "/graphql" [] "TODO"))
+
 ; not found route
 (defroutes not-found-route
   (route/not-found "Error"))
@@ -49,4 +53,4 @@
   ; refering to https://github.com/ring-clojure/ring-defaults/blob/master/src/ring/middleware/defaults.clj
   ; wrap-defaults just inits some default settings for app-routes and
   ; site-defaults provides this default settings 
-  (wrap-defaults (routes api-routes spa-route not-found-route) site-defaults))
+  (wrap-defaults (routes api-routes spa-route graphql-route not-found-route) site-defaults))

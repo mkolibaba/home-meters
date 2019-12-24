@@ -12,7 +12,9 @@
                  ; json library
                  [cheshire "5.9.0"]
                  ; graphql library
-                 [com.walmartlabs/lacinia "0.36.0-alpha-2"]]
+                 [com.walmartlabs/lacinia-pedestal "0.13.0-alpha-1"]
+                 ; logging library
+                 [io.aviso/logging "0.3.2"]]
 
   ; plugin for running 'ring' task
   ; https://github.com/weavejester/lein-ring
@@ -25,6 +27,8 @@
   :source-paths ["src/core"]
   :test-paths ["test/core"]
   :target-path "target/%s"
+
+  :repl-options {:init-ns home-meters.repl}
 
   ; TODO remove uberjar creation if exists
   :profiles {:uberjar {:aot :all}
