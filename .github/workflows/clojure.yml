@@ -8,10 +8,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
     - name: Install dependencies
+      working-directory: ./app
       run: lein deps
     - name: Run tests
+      working-directory: ./app
       run: lein test
 
 # include ui tests 
