@@ -1,4 +1,4 @@
-(ns home-meters.schema
+(ns schema
   (:require [clojure.java.io :as io]
             [com.walmartlabs.lacinia.util :as util]
             [com.walmartlabs.lacinia.schema :as schema]

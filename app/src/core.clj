@@ -1,5 +1,5 @@
-(ns home-meters.core
-  (:require [home-meters.schema :as schema]
+(ns core
+  (:require [schema :as schema]
             [com.walmartlabs.lacinia :as lacinia]
             [compojure.core :refer [defroutes context routes GET POST]]
             [compojure.route :as route]

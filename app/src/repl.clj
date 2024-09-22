@@ -1,5 +1,5 @@
-(ns home-meters.repl
-  (:require [home-meters.schema :as schema]
+(ns repl
+  (:require [schema :as schema]
             [com.walmartlabs.lacinia.pedestal :as lp]
             [io.pedestal.http :as http]
             [clojure.java.browse :refer [browse-url]]))

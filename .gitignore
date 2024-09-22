@@ -1,5 +1,5 @@
-/target
-/classes
+**/target
+**/classes
 /checkouts
 profiles.clj
 pom.xml
@@ -10,9 +10,9 @@ pom.xml.asc
 /.nrepl-port
 .hgignore
 .hg/
-node_modules
-package-lock.json
-resources/public/build
+**/node_modules
+**/package-lock.json
+**/resources/public/build
 /.clj-kondo
 **/.clj-kondo/.cache
 /.lsp/.cache

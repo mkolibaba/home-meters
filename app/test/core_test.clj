@@ -1,7 +1,7 @@
-(ns home-meters.core-test
-  (:require [clojure.test :refer [deftest testing is]]
-            [ring.mock.request :as mock]
-            [home-meters.core :refer [home-meters-app]]))
+(ns core-test
+ (:require [clojure.test :refer [deftest testing is]]
+           [ring.mock.request :as mock]
+           [core :refer [home-meters-app]]))
 
 (deftest index-test
   (testing "Index page"

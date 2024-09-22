@@ -21,14 +21,14 @@
   :plugins [[lein-ring "0.12.5"]]
 
   ; handler for 'ring' task
-  :ring {:handler home-meters.core/home-meters-app}
+  :ring {:handler core/home-meters-app}
 
-  :main ^:skip-aot home-meters.core
-  :source-paths ["src/core"]
-  :test-paths ["test/core"]
+  :main ^:skip-aot core
+  :source-paths ["src"]
+  :test-paths ["test"]
   :target-path "target/%s"
 
-  :repl-options {:init-ns home-meters.repl}
+  :repl-options {:init-ns repl}
 
   ; TODO remove uberjar creation if exists
   :profiles {:uberjar {:aot :all}
