@@ -4,21 +4,21 @@
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :min-lein-version "2.0.0"
-  :dependencies [[org.clojure/clojure "1.10.1"]
+  :dependencies [[org.clojure/clojure "1.12.0"]
                  ; compojure is a simple routing lib
-                 [compojure "1.6.1"]
+                 [compojure "1.7.1"]
                  ; ring-defaults provides default settings for web application
-                 [ring/ring-defaults "0.3.2"]
+                 [ring/ring-defaults "0.5.0"]
                  ; json library
-                 [cheshire "5.9.0"]
+                 [cheshire "5.13.0"]
                  ; graphql library
                  [com.walmartlabs/lacinia-pedestal "0.13.0-alpha-1"]
                  ; logging library
-                 [io.aviso/logging "0.3.2"]]
+                 [io.aviso/logging "1.0"]]
 
   ; plugin for running 'ring' task
   ; https://github.com/weavejester/lein-ring
-  :plugins [[lein-ring "0.12.5"]]
+  :plugins [[lein-ring "0.12.6"]]
 
   ; handler for 'ring' task
   :ring {:handler core/home-meters-app}
