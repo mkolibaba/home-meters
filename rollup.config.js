@@ -1,9 +1,9 @@
 import svelte from 'rollup-plugin-svelte';
 import resolve from '@rollup/plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
+import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
-import { terser } from 'rollup-plugin-terser';
-import autoPreprocess from 'svelte-preprocess';
+import terser from '@rollup/plugin-terser';
+import { sveltePreprocess } from 'svelte-preprocess';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -11,20 +11,25 @@ export default {
     input: 'src/ui/main.js',
     output: {
         sourcemap: true,
-        format: 'iife',
+        format: 'cjs',
         name: 'app',
         file: 'resources/public/build/bundle.js'
     },
     plugins: [
         svelte({
-            // enable run-time checks when not in production
-            dev: !production,
-            // we'll extract any component CSS out into
-            // a separate file — better for performance
-            css: css => {
-                css.write('resources/public/build/bundle.css');
+            emitCss: false,
+            compilerOptions: {
+                // enable run-time checks when not in production
+                dev: !production,
+                // we'll extract any component CSS out into
+                // a separate file — better for performance
+                
+                // css: css => {
+                //     css.write('resources/public/build/bundle.css');
+                // }
+                css: 'injected'
             },
-            preprocess: autoPreprocess()
+            preprocess: sveltePreprocess()
         }),
 
         // If you have external dependencies installed from

@@ -13,3 +13,6 @@ pom.xml.asc
 node_modules
 package-lock.json
 resources/public/build
+/.clj-kondo
+**/.clj-kondo/.cache
+/.lsp/.cache
